@@ -12,6 +12,7 @@ using namespace cv;
 using namespace std;
 
 void simple(Mat& source, const char* file_location);
+void simple_decode(Mat& source, int size);
 
 int main(int argc, char** argv )
 {
@@ -19,9 +20,9 @@ int main(int argc, char** argv )
     char* image_dest = argv[2];
     char* file_location = argv[3];
     
+    // Insert
     Mat image;
     image = imread(image_source, IMREAD_COLOR);
-
     cv::cvtColor(image, image, CV_BGR2GRAY);
     
     std::ifstream in(file_location);
@@ -37,6 +38,11 @@ int main(int argc, char** argv )
     
     simple(image, text);
     imwrite(image_dest, image);
+    
+    // Decode
+    Mat hidden;
+    hidden = imread(image_dest, IMREAD_UNCHANGED);
+    simple_decode(hidden, strlen(text));
 }
 
 void simple(Mat& source, const char* text)
@@ -58,8 +64,12 @@ void simple(Mat& source, const char* text)
             } else { break; }
         }
     }
+}
+
+void simple_decode(Mat& source, int size) {
+    int characters = size;
+    int arraysize = characters * 8;
     
-    // Attempt Decoding
     uchar* decoded = new uchar[characters];
     
     for (int i = 0; i < source.rows; i++)

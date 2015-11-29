@@ -1,5 +1,6 @@
 bin/
 *.jpg
+*.png
 CMakeCache.txt
 CMakeFiles
 CMakeScripts
@@ -9,3 +10,4 @@ install_manifest.txt
 *.build
 *.xcodeproj
 .DS_Store
+*.txt
