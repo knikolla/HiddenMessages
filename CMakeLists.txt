@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8)
-project( ImageCrypt )
+project( HiddenMessages )
 find_package( OpenCV REQUIRED )
 
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
